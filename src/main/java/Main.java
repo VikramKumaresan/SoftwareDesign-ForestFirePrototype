@@ -1,3 +1,4 @@
+import DbTest.MongoTest;
 import DbTest.MySqlTest;
 
 import java.sql.SQLException;
@@ -5,10 +6,11 @@ import java.util.Arrays;
 
 public class Main {
     enum Scenario {
-        MYSQL_TEST
+        MYSQL_TEST,
+        MONGO_TEST
     }
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) {
         System.out.println("\n\n >>> Starting... <<<");
 
         Scenario scenario = args.length == 1 ? getFromString(args[0].trim()) : null;
@@ -20,7 +22,12 @@ public class Main {
 
         switch(scenario) {
             case MYSQL_TEST:
-                MySqlTest.run();
+                System.out.println("Starting MySql test...");
+                new MySqlTest().run();
+                return;
+            case MONGO_TEST:
+                System.out.println("Starting Mongo test...");
+                new MongoTest().run();
                 return;
         }
     }

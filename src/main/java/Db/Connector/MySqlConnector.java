@@ -13,11 +13,8 @@ public class MySqlConnector implements DbConnector {
     private final Connection connection;
 
     public MySqlConnector(String port, String dbName, String username, String password) throws SQLException {
-        connection = DriverManager.getConnection(String.format("jdbc:mysql://127.0.0.1:%s/%s?autoReconnect=true", port, dbName), username, password);
+        connection = DriverManager.getConnection(String.format("jdbc:mysql://localhost:%s/%s?autoReconnect=true", port, dbName), username, password);
     }
-
-    @Override
-    public void setup() {}
 
     @Override
     public void write(SensorData data) {

@@ -23,7 +23,6 @@ public interface DbConnector {
 
     String DB_TABLE_NAME = "Temperature";
 
-    void setup(); // TODO Vikram - Maybe remove this if MongoDB too has support?
     void write(SensorData data);
     List<SensorData> read(Integer page);
 }
